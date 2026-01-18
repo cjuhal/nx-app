@@ -8,8 +8,8 @@ interface User {
 }
 
 const userInitialState: User = {
-    name: 'Christian Juhal',
-    email: 'chrisjuhal@gmail.com',
+    name: 'CJ',
+    email: 'cj@email.com',
     age: 32,
     picture: null,
 }

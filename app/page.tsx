@@ -1,3 +1,5 @@
+import Counter from "@/components/Counter";
+import User from "@/components/User";
 import Image from "next/image";
 
 export default function Home() {
@@ -59,6 +61,11 @@ export default function Home() {
             Documentation
           </a>
         </div>
+
+      <Counter />
+
+      <User />
+
       </main>
     </div>
   );

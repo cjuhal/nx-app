@@ -3,10 +3,9 @@ import { render } from '@testing-library/react'
 import type { RenderOptions } from '@testing-library/react'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-
+import type { counterReducer } from './store/counterSlice'
+import type { userReducer } from './store/userReducer'
 import type { RootState } from './store/store'
-import counterReducer from './store/counterSlice'
-import userReducer from './store/userSlice'
 
 // Definimos una interfaz para las opciones del render que incluye un estado inicial opcional
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {

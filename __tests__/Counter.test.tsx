@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react'
-import { renderWithProviders } from '../test-utils'
 import Counter from '../components/Counter'
+import { renderWithProviders } from '@/tests/test-utils'
 
 describe('Componente Counter', () => {
   test('debe mostrar el valor inicial de 0', () => {

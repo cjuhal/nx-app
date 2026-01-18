@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react'
-import { renderWithProviders } from '../test-utils'
 import User from '../components/User'
+import { renderWithProviders } from '@/tests/test-utils'
 
 describe('Componente User', () => {
     test('debe mostrar el mensaje cuando no hay foto', () => {

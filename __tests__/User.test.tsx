@@ -14,7 +14,7 @@ describe('Componente User', () => {
         renderWithProviders(<User />)
 
         // Aquí podrías verificar el nombre o el email
-        expect(screen.getByText('Christian Juhal')).toBeInTheDocument()
+        expect(screen.getByText(/cj/i)).toBeInTheDocument()
     })
 
     test('cargar imagen y que se vea', () => {

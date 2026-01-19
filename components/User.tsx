@@ -2,6 +2,7 @@
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { removePicture, setPicture } from "@/store/userSlice";
+import Image from "next/image";
 
 export default function User() {
 
@@ -18,7 +19,7 @@ export default function User() {
                 <div className="flex w-full justify-end">
                     {
                         user.picture ? (
-                            <img src={user.picture} className="w-16 h-16 rounded-full object-cover border-2 border-blue-500" alt="picture" />
+                            <Image src={user.picture} className="rounded-full object-cover" width={64} height={64} alt={`Foto de perfil de ${user.name}`} />
                         ) : (
                             <p className="text-sm font-bold">No hay foto disponible</p>
                         )
@@ -27,8 +28,8 @@ export default function User() {
             </div>
 
             <div className="flex gap-4 mt-2">
-                <button className="bg-red-500 border-2 p-4 rounded-lg border-gray-200 shadow-lg text-white" onClick={() => dispatch(removePicture())}> remote picture</button>
-                <button className="bg-green-500 border-2 p-4 rounded-lg border-gray-200 shadow-lg text-white " onClick={() => dispatch(setPicture('/next.svg'))}> upload picture</button>
+                <button className="bg-red-700 border-2 p-4 rounded-lg border-gray-200 shadow-lg text-white" onClick={() => dispatch(removePicture())}> Remove picture</button>
+                <button className="bg-green-700 border-2 p-4 rounded-lg border-gray-200 shadow-lg text-white " onClick={() => dispatch(setPicture('/next.svg'))}> Upload picture</button>
             </div>
 
         </div>

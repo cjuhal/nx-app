@@ -4,9 +4,9 @@ import type { RenderOptions } from '@testing-library/react'
 import { configureStore, combineReducers } from '@reduxjs/toolkit' // 👈 Importamos combineReducers
 import { Provider } from 'react-redux'
 
-import type { RootState } from '../src/store/store'
-import counterReducer from '../src/store/counterSlice'
-import userReducer from '../src/store/userSlice'
+import type { RootState } from '@/store/store'
+import counterReducer from '@/store/counterSlice'
+import userReducer from '@/store/userSlice'
 
 // 1. Creamos el rootReducer fuera para que el tipo sea consistente
 const rootReducer = combineReducers({

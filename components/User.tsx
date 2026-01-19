@@ -1,25 +1,51 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { removePicture, setPicture } from "@/store/userSlice";
+import { fetchUser, removePicture, setPicture } from "@/store/userSlice";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function User() {
 
-    const user = useAppSelector(state => state.user);
+    const { data, loading, error } = useAppSelector(state => state.user);
     const dispatch = useAppDispatch()
+    const { name, email, phone, picture } = data || {};
+    const [inputId, setInputId] = useState("");
+    const [id, setId] = useState<number | null>(null);
+
+    // 🔹 Debounce
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (inputId !== "") {
+                setId(Number(inputId));
+            }
+        }, 500); // ⏱️ debounce 500ms
+
+        return () => clearTimeout(timeout);
+    }, [inputId]);
+
+    // 🔹 Fetch cuando cambia el id debounced
+    useEffect(() => {
+        if (id !== null) {
+            dispatch(fetchUser(id));
+        }
+    }, [dispatch, id]);
+
+    if (loading) return <p className="animate-pulse">Cargando datos del servidor...</p>;
+    if (error) return <p className="text-red-500">Error: {error}</p>;
 
     return (
         <div className="border-1 border-gray-200 p-4 w-full mx-auto shadow-lg mt-5">
+            <input type="number" value={inputId} onChange={(e) => setInputId(e.target.value)} placeholder="ingresar id del usuario" />
             <div className="flex">
                 <div className="flex flex-col w-full">
-                    <p className="font-bold text-xl w-full">{user.name}</p>
-                    <span className="text-gray-500 w-full">{user.age} | {user.email} </span>
+                    <p className="font-bold text-xl w-full">{name}</p>
+                    <span className="text-gray-500 w-full text-xs">{phone} | {email} </span>
                 </div>
                 <div className="flex w-full justify-end">
                     {
-                        user.picture ? (
-                            <Image src={user.picture} className="rounded-full object-cover" width={64} height={64} alt={`Foto de perfil de ${user.name}`} />
+                        picture ? (
+                            <Image src={picture} className="rounded-full object-cover" width={64} height={64} alt={`Foto de perfil de ${name}`} />
                         ) : (
                             <p className="text-sm font-bold">No hay foto disponible</p>
                         )

@@ -36,7 +36,7 @@ describe('Componente User', () => {
         renderWithProviders(<User />)
         const buttonUpload = screen.getByText(/upload picture/i);
         fireEvent.click(buttonUpload)
-        const buttonRemove = screen.getByText(/remote picture/i);
+        const buttonRemove = screen.getByText(/remove picture/i);
         fireEvent.click(buttonRemove)
         expect(screen.getByText(/no hay foto disponible/i)).toBeInTheDocument()
     })

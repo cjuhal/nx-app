@@ -12,9 +12,9 @@ describe('Componente User', () => {
 
     test('debe mostrar los datos del usuario inicial', () => {
         renderWithProviders(<User />)
-
+        const userName = screen.getByText(/CJ/i);
         // Aquí podrías verificar el nombre o el email
-        expect(screen.getByText(/cj/i)).toBeInTheDocument()
+        expect(userName).toBeInTheDocument()
     })
 
     test('cargar imagen y que se vea', () => {

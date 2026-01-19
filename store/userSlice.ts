@@ -27,8 +27,16 @@ const userSlice = createSlice({
     name: 'user',
     initialState: userInitialState,
     reducers: {
-        removePicture: (state) => { state.data.picture = null },
-        setPicture: (state, action: PayloadAction<string>) => { state.data.picture = action.payload; }
+        removePicture: (state) => {
+            if (state.data) {
+                state.data.picture = null;
+            }
+        },
+        setPicture: (state, action: PayloadAction<string>) => {
+            if (state.data) {
+                state.data.picture = action.payload;
+            }
+        }
     },
     extraReducers: (builder) => {
         builder

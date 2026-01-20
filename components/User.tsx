@@ -47,7 +47,7 @@ export default function User() {
                         <div className="flex w-full justify-end">
                             {
                                 picture ? (
-                                    <Image src={picture} className="rounded-full object-cover" width={64} height={64} alt={`Foto de perfil de ${name}`} />
+                                    <Image src={picture} className="rounded-full object-cover dark:invert" width={64} height={64} alt={`Foto de perfil de ${name}`} />
                                 ) : (
                                     <p className="text-sm font-bold">No hay foto disponible</p>
                                 )

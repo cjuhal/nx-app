@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/store/hooks"
 import Image from "next/image";
+import RickAndMortyChar from "./RickAndMortyChar";
 
 export default function UserDetailModal() {
     const { data } = useAppSelector(state => state.user)
@@ -58,6 +59,9 @@ export default function UserDetailModal() {
                 <p><b>Slogan:</b> {company?.catchPhrase}</p>
                 <p><b>Business:</b> {company?.bs}</p>
             </div>
+            <h3 className="font-semibold">Personaje favorito de rick and morty</h3>
+            <RickAndMortyChar id={id} />
+
         </div>
     )
 }

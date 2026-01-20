@@ -35,6 +35,12 @@ export function renderWithProviders(
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
+  // Aseguramos que el modal-root exista en el DOM de JSDOM
+  if (!document.getElementById('modal-root')) {
+    const modalRoot = document.createElement('div');
+    modalRoot.id = 'modal-root';
+    document.body.appendChild(modalRoot);
+  }
   function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
     return <Provider store={store}>{children}</Provider>
   }

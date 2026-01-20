@@ -2,8 +2,9 @@
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchUser, removePicture, setPicture } from "@/store/userSlice";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import ModalWrapper from "./ModalWrapped";
+import UserDetailModal from "./UserDetailModal";
 
 export default function User() {
 
@@ -44,14 +45,13 @@ export default function User() {
                             <p className="font-bold text-xl w-full">{name}</p>
                             <span className="text-gray-500 w-full text-xs">{phone} | {email} </span>
                         </div>
-                        <div className="flex w-full justify-end">
-                            {
-                                picture ? (
-                                    <Image src={picture} className="rounded-full object-cover dark:invert" width={64} height={64} alt={`Foto de perfil de ${name}`} />
-                                ) : (
-                                    <p className="text-sm font-bold">No hay foto disponible</p>
-                                )
-                            }
+                        <div className="flex flex-col w-full items-end">
+                            <ModalWrapper
+                                title="Detalles Técnicos"
+                                trigger={<button style={{float: 'right'}} className="px-4 w-25 py-2 bg-green-500 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg hover:bg-green-600 transition-colors font-bold text-md">Ver más</button>}
+                            >
+                                <UserDetailModal></UserDetailModal>
+                            </ModalWrapper>
                         </div>
                     </div>
 

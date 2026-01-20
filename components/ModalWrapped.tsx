@@ -1,21 +1,19 @@
 "use client";
-import { useState, ReactElement, cloneElement } from "react";
+
+import { ReactElement, cloneElement, useState } from "react";
 import Modal from "./Modal";
 
-interface TriggerProps {
-  onClick?: React.MouseEventHandler;
-}
-
 interface Props {
-  trigger: TriggerProps; // Aquí recibes el botón
+  trigger: ReactElement<
+    React.ButtonHTMLAttributes<HTMLButtonElement>
+  >;
   title: string;
-  children: React.ReactNode; // Contenido del modal
+  children: React.ReactNode;
 }
 
 export default function ModalWrapper({ trigger, title, children }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Clonamos el botón para inyectarle el evento onClick sin que el padre sepa nada
   const triggerWithProps = cloneElement(trigger, {
     onClick: () => setIsOpen(true),
   });

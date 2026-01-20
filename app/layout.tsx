@@ -40,6 +40,7 @@ export default function RootLayout({
           disableTransitionOnChange>
           <Providers>
             {children}
+            <div id="modal-root"></div>
           </Providers>
           <SpeedInsights />
         </ThemeProvider>

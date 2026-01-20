@@ -1,11 +1,35 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface User {
+    id: number;
     name: string;
     email: string;
     age: number;
     phone: string;
     picture: string | null;
+    company: UserCompany;
+    website: string;
+    username: string;
+    address: UserAddress;
+}
+
+interface UserCompany {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+}
+
+interface UserAddress {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: Geo
+}
+
+interface Geo {
+    lat: string;
+    lng: string;
 }
 
 interface UserData {

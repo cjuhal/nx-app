@@ -1,14 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+interface Char {
+    name: string;
+    status: string;
+    species: string;
+    image: string;
+}
+
 interface RickAndMortyData {
-    data: any;
+    data: Char | null;
     loading: boolean;
     error: string;
 }
 
+const initialStateRickAndMorty: RickAndMortyData = { data: null, loading: false, error: '' };
+
 const rickSlice = createSlice({
     name: 'rickAndMorty',
-    initialState: { data: null, loading: false, error: '' } as RickAndMortyData,
+    initialState: initialStateRickAndMorty,
     reducers: {},
     extraReducers: (builder) => {
         builder

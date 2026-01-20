@@ -60,7 +60,7 @@ export default function UserDetailModal() {
                 <p><b>Business:</b> {company?.bs}</p>
             </div>
             <h3 className="font-semibold">Personaje favorito de rick and morty</h3>
-            <RickAndMortyChar id={id} />
+            <RickAndMortyChar />
 
         </div>
     )

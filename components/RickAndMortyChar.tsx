@@ -3,13 +3,15 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchRickAndMortyChar } from '@/store/rickAndMortySlice';
 
-export default function RickAndMortyChar(props: { id: number | undefined }) {
+export default function RickAndMortyChar() {
     const dispatch = useAppDispatch();
     const { data, loading } = useAppSelector(state => state.rickAndMorty);
+    const userData = useAppSelector(state => state.user.data);
+    const { id } = userData
 
     useEffect(() => {
-        dispatch(fetchRickAndMortyChar(props?.id || 1)); // Traemos a Rick
-    }, [dispatch, props]);
+        dispatch(fetchRickAndMortyChar(id)); // Traemos a Rick
+    }, [dispatch, id]);
 
     if (loading) return <p className="animate-pulse">Buscando en el multiverso...</p>;
 

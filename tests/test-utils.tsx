@@ -7,11 +7,13 @@ import { Provider } from 'react-redux'
 import type { RootState } from '@/store/store'
 import counterReducer from '@/store/counterSlice'
 import userReducer from '@/store/userSlice'
+import rickAndMortyReducer from '@/store/rickAndMortySlice'
 
 // 1. Creamos el rootReducer fuera para que el tipo sea consistente
 const rootReducer = combineReducers({
   counter: counterReducer,
   user: userReducer,
+  rickAndMorty: rickAndMortyReducer,
 })
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {

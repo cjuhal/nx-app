@@ -35,10 +35,10 @@ interface Geo {
 interface UserData {
     data: User | null;
     loading: boolean;
-    error: string | null;
+    error: string;
 }
 
-const userInitialState: UserData = { data: null, loading: false, error: null }
+const userInitialState: UserData = { data: null, loading: false, error: '' }
 
 // 1. Definimos la acción asíncrona
 export const fetchUser = createAsyncThunk("user/fetchUser", async (userId: number) => {

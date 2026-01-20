@@ -35,8 +35,8 @@ export default function User() {
     if (error) return <p className="text-red-500">Error: {error}</p>;
 
     return (
-        <div className="border-1 border-gray-200 p-4 w-full mx-auto shadow-lg mt-5">
-            <input type="number" value={inputId} onChange={(e) => setInputId(e.target.value)} placeholder="ingresar id del usuario" />
+        <div className="border-1 border-gray-200 rounded-xl p-4 w-full mx-auto shadow-lg mt-5">
+            <input type="number" className="border-1 border-gray-200 rounded-xl p-1 m-1 w-full " value={inputId} onChange={(e) => setInputId(e.target.value)} placeholder="ingresar id del usuario" />
             {!!data &&
                 <>
                     <div className="flex">
@@ -56,8 +56,8 @@ export default function User() {
                     </div>
 
                     <div className="flex gap-4 mt-2">
-                        <button className="bg-red-700 border-2 p-4 rounded-lg border-gray-200 shadow-lg text-white" onClick={() => dispatch(removePicture())}> Remove picture</button>
-                        <button className="bg-green-700 border-2 p-4 rounded-lg border-gray-200 shadow-lg text-white " onClick={() => dispatch(setPicture('/next.svg'))}> Upload picture</button>
+                        <button className="px-4 py-2 bg-red-500  dark:bg-orange-500 dark:hover:bg-orange-600 text-white rounded-lg hover:bg-red-600 transition-colors font-bold text-xl" onClick={() => dispatch(removePicture())}> Remove picture</button>
+                        <button className="px-4 py-2 bg-green-500 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg hover:bg-green-600 transition-colors font-bold text-xl" onClick={() => dispatch(setPicture('/next.svg'))}> Upload picture</button>
                     </div>
                 </>
             }

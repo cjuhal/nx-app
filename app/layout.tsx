@@ -4,6 +4,7 @@ import "./globals.css";
 import { Provider } from "react-redux";
 import { Providers } from "@/store/providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,14 +29,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
-          {children}
-        </Providers>
-        <SpeedInsights />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange>
+          <Providers>
+            {children}
+          </Providers>
+          <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   );

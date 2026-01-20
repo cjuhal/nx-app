@@ -2,8 +2,12 @@
 import { useState, ReactElement, cloneElement } from "react";
 import Modal from "./Modal";
 
+interface TriggerProps {
+  onClick?: React.MouseEventHandler;
+}
+
 interface Props {
-  trigger: ReactElement; // Aquí recibes el botón
+  trigger: TriggerProps; // Aquí recibes el botón
   title: string;
   children: React.ReactNode; // Contenido del modal
 }

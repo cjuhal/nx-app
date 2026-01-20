@@ -7,13 +7,16 @@ export default function RickAndMortyChar() {
     const dispatch = useAppDispatch();
     const { data, loading } = useAppSelector(state => state.rickAndMorty);
     const userData = useAppSelector(state => state.user.data);
-    const { id } = userData
+    const userId = userData?.id;
 
     useEffect(() => {
-        dispatch(fetchRickAndMortyChar(id)); // Traemos a Rick
-    }, [dispatch, id]);
+        if (userId) {
+            dispatch(fetchRickAndMortyChar(userId));
+        }
+    }, [dispatch, userId]);
 
-    if (loading) return <p className="animate-pulse">Buscando en el multiverso...</p>;
+    if (loading) return <p>Cargando personaje...</p>;
+    if (!data) return null; // No renderizamos nada si no hay datos
 
     return (
         <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-inner">
